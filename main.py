@@ -2,7 +2,6 @@ from json import JSONDecodeError
 from purchase_request import PurchaseRequest
 from fastapi import FastAPI
 from json_db import JsonDB
-import uvicorn
 import json
 
 app = FastAPI()
@@ -24,7 +23,3 @@ async def get_newrbs_requests_endpoint():
         return {"new_rbs_data": newrbsDB}
     except (FileNotFoundError, JSONDecodeError) as e:
         return {"error": f"Failed to read new rbs data: {str(e)}"}
-
-
-if __name__ == "__main__":
-    uvicorn.run(app, port=8000)
