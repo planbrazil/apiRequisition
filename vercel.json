@@ -1,14 +1,16 @@
 {
+    "version": "2",
     "builds": [
         {
-            "src": "main.py",
-            "use": "@vercel/python"
+            "sourceDirectory": "./",
+            "buildCommand": "python -m pip install -r requirements.txt && uvicorn main:app --host 0.0.0.0 --port 8000",
+            "functions": [
+            {
+                "name": "main",
+                "source": "main.py",
+                "handler": "main.get_purchase_requests_endpoint"
+            }
+            ]
         }
-    ],
-    "routes": [
-        {
-            "src": "/(.*)",
-            "dest": "main.py"
-        }
-        ]
+    ]
 }
