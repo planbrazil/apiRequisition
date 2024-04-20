@@ -6,7 +6,7 @@ import json
 
 app = FastAPI()
 
-@app.get('/main')
+@app.get('/')
 async def get_purchase_requests_endpoint():
     try:
         productDB = JsonDB(path='./data/tb_main.json')
